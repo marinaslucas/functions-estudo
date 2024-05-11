@@ -1,7 +1,7 @@
 api_version = "2024-01"
 
 [[extensions]]
-handle = "payment-customization-metafield"
+handle = "payment-customization-meta"
 name = "t:name"
 description = "t:description"
 type = "function"
