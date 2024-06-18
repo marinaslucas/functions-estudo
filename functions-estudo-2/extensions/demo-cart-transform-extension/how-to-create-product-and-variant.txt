@@ -1,0 +1,72 @@
+primeiro:
+criar o produto (versao 2024/01)
+mutation($productInput: ProductInput!) {
+    productCreate(input: $productInput) {
+      product {
+        variants(first: 1) {
+          edges {
+            node {
+              id
+            }
+          }
+        }
+      }
+    }
+  }
+
+  {
+    "productInput": {
+      "status": "ACTIVE",
+      "title": "Japanese Bundle",
+      "claimOwnership": {
+        "bundles": true
+      }
+    }
+  }
+
+  
+
+criando variant: (versao 2023/07)
+mutation productVariantCreate($input: ProductVariantInput!) {
+  productVariantCreate(input: $input) {
+    product {
+      id
+      title
+    }
+    productVariant {
+      id
+      title
+      metafields {
+        nodes {
+          namespace
+          key
+          value
+          type
+        }
+      }
+      requiresComponents
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}
+
+{
+  "input": {
+    "options": "variant with bundle",
+    "productId": "gid://shopify/Product/8658165956841",
+    "metafields": [
+      {
+        "namespace": "custom",
+        "key": "component_reference",
+        "type": "list.variant_reference",
+        "value": "[\"gid://shopify/ProductVariant/47421749002473\", \"gid://shopify/ProductVariant/47421749264617\"]"
+      }
+    ],
+    "requiresComponents": true
+  }
+}
+
+Depois editar o inventory, preço, etc
